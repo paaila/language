@@ -79,7 +79,7 @@ def prepareDataset(input_file='data/corpus.csv', partition=0.8):
     print(input[:10])
     print(labels[:10])
 
-    # Making the distribution more fair. Make len(0):len(1) almost equal.
+    # Making the distribution more fair. Making number of items in each class almost equal.
     for i in range(4):
         for i in range(0, len(labels), 2):
             try:
