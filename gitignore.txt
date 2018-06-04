@@ -1,0 +1,7 @@
+﻿/data
+.idea
+__pycache__
+bigram
+*.csv
+*.gz
+/data/*.*
