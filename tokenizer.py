@@ -97,6 +97,11 @@ def prepareDataset(input_file='data/corpus.csv', partition=0.8):
 
 @timeit
 def load_train_classifier(REPORT_ACCURACY=True, classifier_file="classifier.csv"):
+    """
+    Loads if the classifer already exists
+    Else, trains a classifier and saves it
+    Returns classifier, char_to_id, id_to_char
+    """
     if not os.path.exists(classifier_file):
         print('Initializing fresh parameters')
         print("1. Prepare dataset")
@@ -128,6 +133,8 @@ def load_train_classifier(REPORT_ACCURACY=True, classifier_file="classifier.csv"
 
 
 class SentenceTokenizer:
+    """ Tokenizes text without punctuation into sentences and returns list of sentences """
+
     def __init__(self):
         self.classifier, self.char_to_id, self.id_to_char = load_train_classifier(classifier_file='classifier.csv')
 
