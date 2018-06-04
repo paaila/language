@@ -103,7 +103,7 @@ def load_train_classifier(REPORT_ACCURACY=True, classifier_file="classifier.csv"
     Returns classifier, char_to_id, id_to_char
     """
     if not os.path.exists(classifier_file):
-        print('Initializing fresh parameters')
+        print('Initializing training with fresh parameters')
         print("1. Prepare dataset")
         train_input, train_labels, test_input, test_labels, char_to_id, id_to_char = prepareDataset()
         print('No of train samples {}, test samples {}'.format(len(train_labels), len(test_input)))
@@ -112,6 +112,7 @@ def load_train_classifier(REPORT_ACCURACY=True, classifier_file="classifier.csv"
         classifier = SVC()
         classifier.fit(X=train_input, y=train_labels)
 
+        # Save the classifer, char_to_id, id_to_char to avoid recomputation
         file = open(classifier_file, mode='wb')
         pickle.dump(classifier, file, protocol=pickle.HIGHEST_PROTOCOL)
         pickle.dump(char_to_id, file, protocol=pickle.HIGHEST_PROTOCOL)
